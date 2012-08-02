@@ -1,0 +1,35 @@
+{
+  "name": "wrapit",
+  "version": "0.0.1-6",
+  "description": "web server for wrapping files (like js files) in a header and footer (like a require call)",
+  "bin": {
+    "wrapit": "./bin/wrapit"
+  },
+  "main": "./wrapit.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omphalos/wrapit.git"
+  },
+  "keywords": [
+    "wrap",
+    "require",
+    "Common JS",
+    "module"
+  ],
+  "dependencies": {
+    "optimist": "0.3.4",
+    "request": "2.9.203"
+  },
+  "license": "unlicense",
+  "engine": {
+    "node": ">=0.6.0"
+  },
+  "author": "omphalos",
+  "subdomain": "omphalos.wrapit",
+  "scripts": {
+    "start": "./bin/wrapit"
+  },
+  "engines": {
+    "node": "0.6.x"
+  }
+}
