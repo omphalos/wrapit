@@ -1,9 +1,9 @@
 Webservice to wrap any web resource in a header and footer.  Good for wrapping javascript files in require calls.
 
-Example: use uglify-js in the browser
-=====================================
+Getting started
+===============
 
-This package exposes a directory to create, read, update, delete operations.
+    npm install wrapit
 
 Command-line usage
 ==================
