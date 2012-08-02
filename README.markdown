@@ -19,11 +19,11 @@ This starts a wrapit web service using the specified command-line options.
 Web service usage
 =================
 
-http://omphalos.wrapit.jit.su/**?url=**http://codemirror.net/lib/codemirror.js**&header=**provide('CodeMirror',function(require,exports,module){**&footer=**exports.CodeMirror=CodeMirror;})**&type=**text/javascript
+http://wrapit.jit.su/**?url=**http://codemirror.net/lib/codemirror.js**&header=**provide('CodeMirror',function(require,exports,module){**&footer=**exports.CodeMirror=CodeMirror;})**&type=**text/javascript
 
 There are four parts to this, ?url &header &footer &type.  Let's break that up:
 	
-	http://omphalos.wrapit.jit.su/
+	http://wrapit.jit.su/
 	**?url=**http://codemirror.net/lib/codemirror.js
 	**&header=**provide('CodeMirror',function(require,exports,module){
 	**&footer=**exports.CodeMirror=CodeMirror;})**&type=**text/javascript

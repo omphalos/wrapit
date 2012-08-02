@@ -4,45 +4,45 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	
 	<!-- IE has problems if go to github directly, but is happy when we use wrapit instead -->
-	<script src="http://omphalos.wrapit.jit.su/?url=https://raw.github.com/omphalos/require-shim/master/require-shim.js" ></script>
+	<script src="http://wrapit.jit.su/?url=https://raw.github.com/omphalos/require-shim/master/require-shim.js" ></script>
 	
 	<!-- four parts to the query string:
-	wrapit url:      <script src="http://omphalos.wrapit.jit.su/
+	wrapit url:      <script src="http://wrapit.jit.su/
 	file header:                 ?header= provide('uglify-js/uglify-js', function(require, exports, module){
 	url to wrap:                 &url=        https://raw.github.com/mishoo/UglifyJS/master/uglify-js.js
     file footer:                 &footer= });"></script>
 	-->
 	
 	<!-- reference to uglify-js/lib/consolidator -->
-	<script src="http://omphalos.wrapit.jit.su/
+	<script src="http://wrapit.jit.su/
 				?header= provide('uglify-js/lib/consolidator', function(require, exports, module){
 				&url=		https://raw.github.com/mishoo/UglifyJS/master/lib/consolidator.js
 				&footer= });">
 	</script>
 	
 	<!-- reference to uglify-js/lib/parse-js -->
-	<script src="http://omphalos.wrapit.jit.su/
+	<script src="http://wrapit.jit.su/
 				?header= provide('uglify-js/lib/parse-js', function(require, exports, module){
 				&url=		https://raw.github.com/mishoo/UglifyJS/master/lib/parse-js.js
 				&footer= });">
 	</script>
 	
 	<!-- reference to uglify-js/lib/process -->
-	<script src="http://omphalos.wrapit.jit.su/
+	<script src="http://wrapit.jit.su/
 				?header= provide('uglify-js/lib/process', function(require, exports, module){
 				&url=		https://raw.github.com/mishoo/UglifyJS/master/lib/process.js
 				&footer= });">
 	</script>
 
 	<!-- reference to uglify-js/lib/squeeze-more -->
-	<script src="http://omphalos.wrapit.jit.su/
+	<script src="http://wrapit.jit.su/
 				?header= provide('uglify-js/lib/squeeze-more',function(require, exports, module){
 				&url=		https://raw.github.com/mishoo/UglifyJS/master/lib/squeeze-more.js
 				&footer= });">
 	</script>
 	
 	<!-- include uglify-js/uglify-js -->
-	<script src="http://omphalos.wrapit.jit.su/
+	<script src="http://wrapit.jit.su/
 				?header= provide('uglify-js/uglify-js', function(require, exports, module){
 				&url=		https://raw.github.com/mishoo/UglifyJS/master/uglify-js.js
 				&footer= });">

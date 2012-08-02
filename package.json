@@ -1,6 +1,6 @@
 {
   "name": "wrapit",
-  "version": "0.0.1-6",
+  "version": "0.0.2-1",
   "description": "web server for wrapping files (like js files) in a header and footer (like a require call)",
   "bin": {
     "wrapit": "./bin/wrapit"
@@ -18,14 +18,15 @@
   ],
   "dependencies": {
     "optimist": "0.3.4",
-    "request": "2.9.203"
+    "request": "2.9.203",
+    "node-markdown": "0.1.1"
   },
   "license": "unlicense",
   "engine": {
     "node": ">=0.6.0"
   },
   "author": "omphalos",
-  "subdomain": "omphalos.wrapit",
+  "subdomain": "wrapit",
   "scripts": {
     "start": "./bin/wrapit"
   },
