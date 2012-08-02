@@ -12,8 +12,8 @@ Command-line usage
 
 This starts a wrapit web service using the specified command-line options.
 
-	-p: port to listen on (example, 85)
-	-q: suppress the help message
+	-p port to listen on (example, 85)
+	-q suppress the help message
 
 Web service usage
 =================
