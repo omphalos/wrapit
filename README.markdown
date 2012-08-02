@@ -1,59 +1,54 @@
-Basic file server supporting create, read, update, &a delete
+Webservice to wrap any web resource in a header and footer.  Good for wrapping javascript files in require calls.
+
+Example: use uglify-js in the browser
+==================
 
 This package exposes a directory to create, read, update, delete operations.
 
 Command-line usage
 ==================
 
-     crud-file-server [options]
+     wrapit [options]
 
-This starts a file server using the specified command-line options.
+This starts a wrapit web service using the specified command-line options.
 
-	-f: file system path to expose over http
 	-p: port to listen on (example, 85)
 	-q: suppress the help message
 
 
-Server-Side Usage
+Web service usage
 =================
 
-	require('http-proxy').createServer(function (req, res, proxy) {
-		require('subproxy').handleRequest(subProxyHost, port, req, res, proxy);
+http://omphalos.wrapit.jit.su/**?url=**http://codemirror.net/lib/codemirror.js**&header=**provide('CodeMirror',function(require,exports,module){**&footer=**exports.CodeMirror=CodeMirror;})**&type=**text/javascript
+
+There are four parts to this, ?url &header &footer &type.  Let's break that up:
+	
+	http://omphalos.wrapit.jit.su/
+	**?url=**http://codemirror.net/lib/codemirror.js
+	**&header=**provide('CodeMirror',function(require,exports,module){
+	**&footer=**exports.CodeMirror=CodeMirror;})**&type=**text/javascript
+	
+	In this case, the url is http://codemirror.net/lib/codemirror.js, which gets wrapped in a 'provide' definition using require-shim.  
+	
+	Of course, you can use whatever library you want.  Also, you don't have to just wrap javascript files -- you can wrap css or html or anything else for that matter.  **wrapit** doesn't care.
+
+Server-side usage
+=================
+
+	require('http').createServer(function (req, res) {
+		require('wrapit').handleRequest(req, res);
 	}).listen(port);
 	
-Supported operations
-====================
-
-**GET** returns a file's contents with the correct mime type, or else the contents of a directory as a JSON array.
-
-**PUT** can be used to write a file.
-
-**DELETE** can be used to delete a file or folder.
-
-**POST** supports two operations, rename and create directory.  
-
-POST http://localhost/newDir?create=directory would create a directory named newDir.  
-
-POST http://localhost/abc.html?rename=def.html would rename abc.html to def.html.
 
 Run the Example
 ===============
 
-For further clarification, try running the example:
+There is an example.html file in the local directory, demonstrating how to run uglify-js in a web page without installing anything (even Node.js) on your local machine.
 
-    npm install crud-file-server
+Why might this be useful?
+=========================
 
-Navigate to the example directory (which should now be under node_modules/crud-file-server/example).
-
-	cd node_modules/crud-file-server/example
-
-Run crud-file-server to host this directory. 
-
-    crud-file-server -p 3300
-    	
-Now use your browser to navigate to http://localhost:3300/example.html.  
-You will see a simple client that lets you interact with your file system from the web browser.
-
+This utility is designed to help a web developer quickly prototype namespaced javascript code, but there are probably other uses as well.
 
     
 
