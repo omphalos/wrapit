@@ -1,11 +1,11 @@
 {
   "name": "wrapit",
-  "version": "0.0.4-1",
+  "version": "0.0.5",
   "description": "web server for wrapping files (like js files) in a header and footer (like a require call)",
   "bin": {
     "wrapit": "./bin/wrapit"
   },
-  "main": "./wrapit.js",
+  "main": "./wrapit",
   "repository": {
     "type": "git",
     "url": "https://github.com/omphalos/wrapit.git"
