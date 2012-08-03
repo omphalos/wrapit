@@ -28,9 +28,9 @@ There are four parts to this, ?url &header &footer &type.  Let's break that up:
 	**&footer=**exports.CodeMirror=CodeMirror;})
 	**&type=**text/javascript	
 	
-	In this case, the url is http://codemirror.net/lib/codemirror.js, which gets wrapped in a 'provide' definition (taken from require-shim).  Type signifies the mime type (which you can leave blank in most cases).
+In this case, the url is http://codemirror.net/lib/codemirror.js, which gets wrapped in a 'provide' definition (taken from require-shim).  Type signifies the mime type (which you can leave blank in most cases).
 	
-	Of course, you can use whatever require library you want.  Also, you don't have to just wrap javascript files -- you can wrap css or html or anything else for that matter.  **wrapit** doesn't care.
+Of course, you can use whatever require library you want.  Also, you don't have to just wrap javascript files -- you can wrap css or html or anything else for that matter.  **wrapit** doesn't care.
 
 Server-side usage
 =================
