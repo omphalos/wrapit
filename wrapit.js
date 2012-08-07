@@ -3,10 +3,14 @@ var request = require('request');
 var fs = require('fs');
 var util = require('util');
 
-var reportError = function(res, err) { 
+process.on('uncaughtException', function(err) {
+  console.log(err);
+});
+
+var reportError = function(res, err, statusCode) { 
 	console.dir(err);
 	try {
-		res.statusCode = 500;
+		res.statusCode = statusCode || 500;
 		res.setHeader('Content-Type', 'application/json');
 		var message = util.inspect(err);
 		if(message.indexOf("Invalid URI") >= 0) { 
@@ -19,31 +23,40 @@ var reportError = function(res, err) {
 };
 
 exports.wrapit = function(req, res, query) { 
-	request(query.url, function(err, remoteRes, body) {	
-		try {
-			// console.dir(remoteRes);
-			if(err) { 
+	var method = req.method.toLowerCase();
+	if(method != 'GET && method != 'HEAD') {
+		reportError(res, 'method ' + method + ' not supported', 405);
+	} else {	 
+		request[method](query.url, function(err, remoteRes, body) {	
+			try {
+				if(err) { 
+					reportError(res, err);
+				} else {
+					// pipe the headers
+					console.dir(remoteRes.headers);
+					
+					for(var h in remoteRes.headers) {
+						res.setHeader(h, remoteRes.headers[h]);
+					}
+
+					if(req.method == 'GET') {					
+						// &header= sets the header, e.g., &header=provide('uglify-js', function(require, exports, module) {
+						if(query.header) { res.write(query.header + '\r\n'); }
+						
+						// write the headers & body (which we got from url)
+						if(body) { res.write(body); }
+						
+						// &footer= sets the footer, e.g., &footer=});
+						if(query.footer) { res.write('\r\n' + query.footer); }
+					}
+					
+					res.end();
+				}
+			} catch(err) { 
 				reportError(res, err);
-			} else {
-				// pipe the headers
-				res.writeHead(remoteRes.headers);
-				res.statusCode = remoteRes.statusCode;
-			
-				// &header= sets the header, e.g., &header=provide('uglify-js', function(require, exports,module) {
-				if(query.header) { res.write(query.header + '\r\n'); }
-				
-				// write the headers & body (which we got from url)
-				res.write(body); 
-				
-				// &footer= sets the footer, e.g., &footer=});
-				if(query.footer) { res.write('\r\n' + query.footer); }
-				
-				res.end();
 			}
-		} catch(err) { 
-			reportError(res, err);
-		}
-	});	
+		});	
+	}
 };
 
 exports.handleRequest = function(req, res) { 
