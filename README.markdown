@@ -18,15 +18,14 @@ This starts a wrapit web service using the specified command-line options.
 Web service usage
 =================
 
-http://wrapit.jit.su/?url=http://codemirror.net/lib/codemirror.js&header=provide('CodeMirror',function(require,exports,module){&footer=exports.CodeMirror=CodeMirror;})&type=text/javascript
+http://localhost/?url=http://codemirror.net/lib/codemirror.js&header=provide('CodeMirror',function(require,exports,module){&footer=exports.CodeMirror=CodeMirror;})&type=text/javascript
 
 There are four parts to this, ?url &header &footer &type.  Let's break that up:
 	
-	http://wrapit.jit.su/
+	http://localhost/
 	**?url=**http://codemirror.net/lib/codemirror.js
 	**&header=**provide('CodeMirror',function(require,exports,module){
 	**&footer=**exports.CodeMirror=CodeMirror;})
-	**&type=**text/javascript	
 	
 In this case, the url is http://codemirror.net/lib/codemirror.js, which gets wrapped in a 'provide' definition (taken from require-shim).  Type signifies the mime type (which you can leave blank in most cases).
 	

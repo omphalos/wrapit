@@ -1,6 +1,6 @@
 {
   "name": "wrapit",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "web server for wrapping files (like js files) in a header and footer (like a require call)",
   "bin": {
     "wrapit": "./bin/wrapit"

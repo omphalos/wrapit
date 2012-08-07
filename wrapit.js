@@ -20,22 +20,28 @@ var reportError = function(res, err) {
 
 exports.wrapit = function(req, res, query) { 
 	request(query.url, function(err, remoteRes, body) {	
-		if(err) { 
+		try {
+			// console.dir(remoteRes);
+			if(err) { 
+				reportError(res, err);
+			} else {
+				// pipe the headers
+				res.writeHead(remoteRes.headers);
+				res.statusCode = remoteRes.statusCode;
+			
+				// &header= sets the header, e.g., &header=provide('uglify-js', function(require, exports,module) {
+				if(query.header) { res.write(query.header + '\r\n'); }
+				
+				// write the headers & body (which we got from url)
+				res.write(body); 
+				
+				// &footer= sets the footer, e.g., &footer=});
+				if(query.footer) { res.write('\r\n' + query.footer); }
+				
+				res.end();
+			}
+		} catch(err) { 
 			reportError(res, err);
-		} else {
-			// &type= sets the mime type, e.g., &type=text/javascript
-			if(query.type) { res.setHeader('Content-Type', query.type); }
-			
-			// &header= sets the header, e.g., &header=provide('uglify-js', function(require, exports,module) {
-			if(query.header) { res.write(query.header + '\r\n'); }
-			
-			// write the body (which we got from url)
-			res.write(body); 
-			
-			// &footer= sets the footer, e.g., &footer=});
-			if(query.footer) { res.write('\r\n' + query.footer); }
-			
-			res.end();
 		}
 	});	
 };
