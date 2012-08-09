@@ -24,7 +24,7 @@ var reportError = function(res, err, statusCode) {
 
 exports.wrapit = function(req, res, query) { 
 	var method = req.method.toLowerCase();
-	if(method != 'GET && method != 'HEAD') {
+	if(method != 'GET' && method != 'HEAD') {
 		reportError(res, 'method ' + method + ' not supported', 405);
 	} else {	 
 		request[method](query.url, function(err, remoteRes, body) {	
