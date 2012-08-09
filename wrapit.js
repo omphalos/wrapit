@@ -33,10 +33,15 @@ exports.wrapit = function(req, res, query) {
 					reportError(res, err);
 				} else {
 					// pipe the headers
+					console.log(req.url);
 					console.dir(remoteRes.headers);
 					
-					for(var h in remoteRes.headers) {
+					for(var h in remoteRes.headers) {						
 						res.setHeader(h, remoteRes.headers[h]);
+					}
+					
+					if(query.type) { 
+						res.setHeader(h, query.type);
 					}
 
 					if(req.method == 'GET') {					

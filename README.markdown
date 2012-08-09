@@ -18,7 +18,7 @@ This starts a wrapit web service using the specified command-line options.
 Web service usage
 =================
 
-http://localhost/?url=http://codemirror.net/lib/codemirror.js&header=provide('CodeMirror',function(require,exports,module){&footer=exports.CodeMirror=CodeMirror;})&type=text/javascript
+http://localhost/?url=http://codemirror.net/lib/codemirror.js&header=provide('CodeMirror',function(require,exports,module){&footer=exports.CodeMirror=CodeMirror;})&type=text/javascript&type=text/javascript
 
 There are four parts to this, ?url &header &footer &type.  Let's break that up:
 	
@@ -26,8 +26,9 @@ There are four parts to this, ?url &header &footer &type.  Let's break that up:
 	**?url=**http://codemirror.net/lib/codemirror.js
 	**&header=**provide('CodeMirror',function(require,exports,module){
 	**&footer=**exports.CodeMirror=CodeMirror;})
+	**&type=**text/javascript
 	
-In this case, the url is http://codemirror.net/lib/codemirror.js, which gets wrapped in a 'provide' definition (taken from require-shim).  Type signifies the mime type (which you can leave blank in most cases).
+In this case, the url is http://codemirror.net/lib/codemirror.js, which gets wrapped in a 'provide' definition (taken from require-shim).  Type signifies the mime type.
 	
 Of course, you can use whatever require library you want.  Also, you don't have to just wrap javascript files -- you can wrap css or html or anything else for that matter.  **wrapit** doesn't care.
 
