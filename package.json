@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "optimist": "0.3.4",
-    "request": "2.9.203",
+    "request": "2.88.0",
     "node-markdown": "0.1.1"
   },
   "license": "unlicense",
